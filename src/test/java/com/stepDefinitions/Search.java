@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 
 
 
-public class loginSteps {
+public class Search {
 
 
-    private CommonBase commonBase;
-    private static final Logger log = LoggerFactory.getLogger(loginSteps.class);
+    private final CommonBase commonBase;
+    private static final Logger log = LoggerFactory.getLogger(Search.class);
 
-    public loginSteps(CommonBase commonBase) {
+    public Search(CommonBase commonBase) {
         this.commonBase = commonBase;
     }
 
@@ -28,13 +28,11 @@ public class loginSteps {
     }
 
     @When("User can book Bus And Train Ticket Source {string} and Destination {string}")
-    public void user_logged_in(String source, String destination) {
+    public void user_logged_in(String source, String destination) throws InterruptedException {
         commonBase.homePage=(HomePage) commonBase.pageObjectManager.getPage("Home");
-        System.out.println(source + " source");
-        log.info("All Driver Closed");
-        System.out.println(destination + " destination");
-        commonBase.homePage.searchFlight(source, destination);
-
+        log.info("Source {}", source);
+        log.info("Destination {}", destination);
+        commonBase.homePage.searchFlight(source, destination,"Fastest");
 
     }
 

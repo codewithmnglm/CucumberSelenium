@@ -36,7 +36,7 @@ public class Hooks {
     @After
     public void closeBrowser(){
         if(commonBase.driver!=null){
-            commonBase.driver.quit();
+           // commonBase.driver.quit();
         }
         log.info("All Driver Closed");
 
