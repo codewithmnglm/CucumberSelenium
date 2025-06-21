@@ -12,7 +12,10 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@regression",
         glue="com.stepDefinitions",
         plugin = {
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                "pretty",                                                  // Console output
+                "html:target/cucumber-reports/html-report.html",           // Basic HTML report
+                "json:target/cucumber-reports/cucumber.json",              // JSON report (used by Allure)
+                "junit:target/cucumber-reports/cucumber.xml",
         }
 
 )

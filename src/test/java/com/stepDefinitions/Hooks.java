@@ -25,28 +25,32 @@ public class Hooks {
     }
 
 
-    @Before()
+    @Before() //Runs before once executing a Scenario
     public void setUp() throws IOException {
         commonBase.initializeDriver();
-        System.out.println("Drivers Intialized");
+        log.info("Drivers Intialized");
     }
 
-
-    @After
-    public void closeBrowser(){
-        if(commonBase.driver!=null){
-           // commonBase.driver.quit();
+    @After //Runs after once executing a Scenario
+    public void closeBrowser() {
+        if (commonBase.driver != null) {
+            commonBase.driver.quit();
         }
         log.info("All Driver Closed");
 
     }
 
+    @AfterStep // Runs after each step in a Scenario
+    public void printAfterEachScenario(Scenario scenario) {
+        log.info("Test Cases Running " + scenario.getName());
+    }
+
     @AfterStep
     public void addScreedShot(Scenario scenario) throws IOException {
-        if(!scenario.isFailed()){
-            File file= ((TakesScreenshot)commonBase.driver).getScreenshotAs(OutputType.FILE);
+        if (!scenario.isFailed()) {
+            File file = ((TakesScreenshot) commonBase.driver).getScreenshotAs(OutputType.FILE);
             FileUtils.readFileToByteArray(file);
-            scenario.attach(FileUtils.readFileToByteArray(file),".png" ,"Failed Case");
+            scenario.attach(FileUtils.readFileToByteArray(file), ".png", "Failed Case");
         }
 
     }
