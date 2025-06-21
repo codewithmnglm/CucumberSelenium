@@ -1,8 +1,7 @@
 package com.stepDefinitions;
 
-import com.aventstack.extentreports.reporter.FileUtil;
+
 import com.utils.CommonBase;
-import com.utils.TestBase;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -26,7 +25,7 @@ public class Hooks {
     }
 
 
-    @Before
+    @Before()
     public void setUp() throws IOException {
         commonBase.initializeDriver();
         System.out.println("Drivers Intialized");

@@ -16,7 +16,7 @@ public class HomePage {
 
 
     private By flightLink = By.xpath("//a[@href='https://tickets.paytm.com/flights/']//i[@id='Flights']");
-    private By busLink = By.xpath("//a[@href='https://tickets.paytm.com/bus/']//i[@id='Bus']");
+    private By busLink = By.xpath("//a[@href='https://tickets.paytm.com/bus/']");
     private By trainLink = By.xpath("//a[@href='https://tickets.paytm.com/trains/']//img[@id='Trains']");
     private By intFlightLink = By.xpath("//a[@href='https://tickets.paytm.com/international-flights/']//i[@id='Intl. Flights']");
 

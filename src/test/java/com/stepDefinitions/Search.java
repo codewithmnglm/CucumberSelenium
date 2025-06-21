@@ -1,6 +1,7 @@
 package com.stepDefinitions;
 
 
+import com.pages.BusPage;
 import com.pages.HomePage;
 import com.utils.CommonBase;
 import io.cucumber.java.en.Given;
@@ -27,12 +28,26 @@ public class Search {
 
     }
 
-    @When("User can book Bus And Train Ticket Source {string} and Destination {string}")
-    public void user_logged_in(String source, String destination) throws InterruptedException {
+    @When("User can book Flight Source {string} and Destination {string}")
+    public void bookFlightTicket(String source, String destination) throws InterruptedException {
         commonBase.homePage=(HomePage) commonBase.pageObjectManager.getPage("Home");
         log.info("Source {}", source);
         log.info("Destination {}", destination);
         commonBase.homePage.searchFlight(source, destination,"Fastest");
+
+    }
+
+    public BusPage navigateToBusPage(){
+        return commonBase.homePage.navigateToBusPage();
+    }
+
+    @When("User can book Bus Ticket {string} and Destination {string}")
+    public void userBusTicket(String source, String destination) throws InterruptedException {
+        commonBase.homePage=(HomePage) commonBase.pageObjectManager.getPage("Home");
+        log.info("Source {}", source);
+        log.info("Destination {}", destination);
+        BusPage busPage=commonBase.homePage.navigateToBusPage();
+        busPage.searchAllBuses(source,destination);
 
     }
 
